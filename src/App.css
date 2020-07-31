@@ -6,6 +6,10 @@ body{
   margin-right: auto;
   margin-left: auto;
 }
+a{
+  text-decoration: none;
+  color: #000;
+}
 @media (min-width: 768px) {
   body {
     width: 750px;
