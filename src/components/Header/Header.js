@@ -19,9 +19,9 @@ function Header( {currentUser}) {
       </Link>
         {
           currentUser ?
-            <div className="option" onClick={ () => auth.signOut()}>SignOut</div>
+            (<div className="option" onClick={ () => auth.signOut()}>SignOut</div>)
             :
-            <Link className="option" to='/sign-in'>Signin</Link>
+            (<Link className="option" to='/sign-in'>Signin</Link>)
       }
     </div>
     </div>
