@@ -28,7 +28,7 @@ class App extends React.Component {
   componentWillUnmount() {
     this.unsubscribeFromAuth()
   }
-  render() {
+  render() { 
     return (
     <div>
         <Header currentUser={this.state.currentUser}/>
