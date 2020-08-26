@@ -8,7 +8,7 @@ import './sign-up.scss'
 import CustomButton from '../Custom-button/CustomButton'
 
 class SignUp extends React.Component{
-  constructor () {
+  constructor() {
     super()
     
     this.state = {
@@ -17,13 +17,35 @@ class SignUp extends React.Component{
       password: '',
       confirmPassword: ''
     }
-
+  }
     handleSubmit = async event => {
       event.preventDefault();
-     const {displayName, email, password, confirmPassword} = this.state
-      
-    }
-  }
+      const { displayName, email, password, confirmPassword } = this.state
+      if (password !== confirmPassword) {
+        alert("Password doesn't match")
+        return;
+      }
+      try {
+        const { user } = auth.createUserWithEmailAndPassword(email, password);
+
+        await createUserProfileDocument(user, { displayName });
+        this.setState({
+          displayName: '',
+          email: '',
+          password: '',
+          confirmPassword: ''
+        })
+      }
+      catch (error) {
+        console.error(error)
+      }
+    };
+
+    handleChange = event => {
+      const { name, value } = event.target;
+      this.setState({ [name]: value });
+    };
+
   render() {
      const {displayName, email, password, confirmPassword} = this.state
       return (
@@ -66,4 +88,4 @@ class SignUp extends React.Component{
     }
 }
 
-export default SignUp
+  export default SignUp;
